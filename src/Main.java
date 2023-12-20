@@ -10,6 +10,7 @@ public class Main {
 
         System.out.println(hasRepeats(source, 4)); // true, тк ABAB встречается два раза, хоть эти куски и пересекаются
         System.out.println(hasRepeats(source, 5)); // false
+        System.out.println(hasRepeats(source, 2)); // true
     }
 
     public static boolean hasRepeats(String source, int size) {
@@ -20,14 +21,10 @@ public class Main {
             LazyString slice; // вырезание подстроки
             if (prev == null) {
                 // первую подстроку создаём конструктором за линейную асимптотику
-                // ВАШ КОД
                 prev = new LazyString(source, 0, size);
-
             } else {
                 // все остальные через сдвиг вправо от предыдущей подстроки, за O(1)
-                // ВАШ КОД
                 slice = prev.shiftRight();
-
                 if (slices.contains(slice)) { // проверка на наличие повтора этой подстроки
                     return true; // если уже встречали, значит повторы нет
                 } else {

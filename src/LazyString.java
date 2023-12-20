@@ -11,23 +11,16 @@ public class LazyString {
         this.start = start;
         this.end = end;
 
-        // ВАШ КОД
-        // а тут нужно посчитать hash
+        // ВАШ КОД а тут нужно посчитать hash
         // просто сложите все коды символов нашей подстроки
-        // и сохраните в поле hash.
-        // из-за этого, создание LazyString через конструктор будет линейным
-
-       // StringBuilder pattern = new StringBuilder();
-
-
+        // и сохраните в поле hash из-за этого, создание LazyString через конструктор будет линейным
+        StringBuilder pattern = new StringBuilder();
         int hash = 0;
         for (int i = 0; i < length(); i++) {
             hash += source.charAt(i);
-           // pattern.append(source.charAt(i));
+            pattern.append(source.charAt(i));
         }
         this.hash = hash;
-       // System.out.println("Хеш для '" + pattern + "' равен " + hash);
-
     }
 
     public LazyString shiftRight() {
@@ -37,13 +30,10 @@ public class LazyString {
         shifted.start = start + 1;
         shifted.end = end + 1;
 
-
-        // ВАШ КОД
-        // Вычислите хеш для shifted из хеша для исходной строки
+        // ВАШ КОД Вычислите хеш для shifted из хеша для исходной строки
         // и заполните его в shifted.hash.
         // Заметьте, что достаточно просто вычесть код того
         // символа, что исчез и прибавить код того символа, что появился
-
         if (end <= shifted.source.length()) {
             shifted.hash = hash - shifted.source.charAt(start) + shifted.source.charAt(end);
         }
@@ -59,7 +49,6 @@ public class LazyString {
         if (length() != that.length()) {
             return false;
         }
-
         // перебираем и сравниваем на равенство все символы
         for (int i = 0; i < length(); i++) {
             char myChar = source.charAt(start + i);
@@ -83,7 +72,6 @@ public class LazyString {
         LazyString that = (LazyString) o;
         return this.equals(that);
     }
-
 }
 
 
